@@ -1,5 +1,5 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.FB.Model.FBAccount" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.FB.Model.ResultModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -58,7 +58,15 @@
 				    <div class="col">
 				    	<h5>Nhập UID convert</h5>
 				    	<div class="form-floating">
-						  <textarea class="form-control" name="phone" placeholder="Leave a comment here" id="phone" style="height: 400px"><%=request.getAttribute("listPhone")%></textarea>
+						  <textarea class="form-control" name="phone" placeholder="Leave a comment here" id="phone" style="height: 400px"><%
+						  	if (request.getAttribute("listPhone")!=null){
+								ResultModel list = (ResultModel) request.getAttribute("listPhone");
+								List<String> listPhone = list.getResult();
+								for (String item:listPhone){
+									out.print(item);
+								}
+							}
+						  %></textarea>
 						  <label for="phone">Comments</label>
 						</div>
 				    </div>

@@ -10,7 +10,6 @@ public class FBAccountMapper implements RowMapper{
     public Object mapRow(ResultSet rs) {
         try {
             FBAccount fb = new FBAccount();
-            fb.setId(rs.getLong("id"));
             fb.setFacebook_id(rs.getString("FACEBOOK_ID"));
             fb.setPhone(rs.getString("phone"));
             return fb;
