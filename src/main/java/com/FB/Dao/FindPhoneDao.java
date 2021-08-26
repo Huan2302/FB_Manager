@@ -6,8 +6,8 @@ import com.FB.mapper.FBAccountMapper;
 import java.util.List;
 
 public class FindPhoneDao extends AbstractDao{
-    public List<FBAccount> findAll(){
-        String sql = "SELECT * FROM fbaccount ORDER BY FACEBOOK_ID ASC";
+    public List<FBAccount> findAll(String table){
+        String sql = "SELECT * FROM "+table+" ORDER BY FACEBOOK_ID ASC";
         return query(sql,new FBAccountMapper());
     }
 }

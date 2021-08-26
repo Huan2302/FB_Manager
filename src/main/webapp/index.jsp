@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.FB.Model.ResultModel" %>
+<%@ page import="com.FB.Thread.ShareData" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -60,10 +61,12 @@
 				    	<div class="form-floating">
 						  <textarea class="form-control" name="phone" placeholder="Leave a comment here" id="phone" style="height: 400px"><%
 						  	if (request.getAttribute("listPhone")!=null){
-								ResultModel list = (ResultModel) request.getAttribute("listPhone");
-								List<String> listPhone = list.getResult();
-								for (String item:listPhone){
-									out.print(item);
+
+								List<ResultModel> listPhone = (List<ResultModel>) request.getAttribute("listPhone");
+								for (ResultModel item:listPhone){
+									for (String phone:item.getResult()){
+										out.println(phone);
+									}
 								}
 							}
 						  %></textarea>

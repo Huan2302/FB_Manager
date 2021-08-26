@@ -12,13 +12,14 @@ public class Handle {
     private List<String> listPhone = new ArrayList<>();
     private List<String> next = new ArrayList<>();
 
-    public ResultModel InterPolationSearch( List<FBAccount> listUid, int location, ArrayList<String> list, int start){
+    public ResultModel InterPolationSearch( List<FBAccount> listUid, int location, List<String> list, int start){
         int n = location;
         String item = list.get(start);
         for (int i = n; i < listUid.size();i++){
             FBAccount uid = listUid.get(i);
             if (uid.getFacebook_id().equals(item)) {
                 listPhone.add(uid.getPhone());
+//                System.out.println(uid.getPhone());
                 ++start;
                 if (start == list.size()){
                     rs.setNext(next);
@@ -37,8 +38,8 @@ public class Handle {
         return InterPolationSearch(listUid,n,list,start+1);
     }
 
-    public ArrayList<String> Pretreatment(String[] lists){
-        ArrayList<String> arrStr = new ArrayList<>();
+    public List<String> Pretreatment(String[] lists){
+        List<String> arrStr = new ArrayList<>();
         for (int i = 0; i< lists.length;i++){
             if (!arrStr.contains(lists[i])){
                 arrStr.add(lists[i]);
