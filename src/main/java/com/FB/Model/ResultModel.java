@@ -5,6 +5,15 @@ import java.util.List;
 public class ResultModel {
     private List<String> result;
     private List<String> next;
+    private List<FBAccount> accounts;
+
+    public List<FBAccount> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<FBAccount> accounts) {
+        this.accounts = accounts;
+    }
 
     public List<String> getResult() {
         return result;

@@ -11,6 +11,7 @@ public class Handle {
     private ResultModel rs = new ResultModel();
     private List<String> listPhone = new ArrayList<>();
     private List<String> next = new ArrayList<>();
+    private List<FBAccount> accounts = new ArrayList<>();
 
     public ResultModel InterPolationSearch( List<FBAccount> listUid, int location, List<String> list, int start){
         int n = location;
@@ -19,11 +20,12 @@ public class Handle {
             FBAccount uid = listUid.get(i);
             if (uid.getFacebook_id().equals(item)) {
                 listPhone.add(uid.getPhone());
-//                System.out.println(uid.getPhone());
+                accounts.add(uid);
                 ++start;
                 if (start == list.size()){
                     rs.setNext(next);
                     rs.setResult(listPhone);
+                    rs.setAccounts(accounts);
                     return rs;
                 }
                 return InterPolationSearch(listUid,i,list,start);
@@ -33,6 +35,7 @@ public class Handle {
         if (start + 1 == list.size()){
             rs.setNext(next);
             rs.setResult(listPhone);
+            rs.setAccounts(accounts);
             return rs;
         }
         return InterPolationSearch(listUid,n,list,start+1);

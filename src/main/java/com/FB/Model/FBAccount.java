@@ -1,6 +1,6 @@
 package com.FB.Model;
 
-public class FBAccount {
+public class FBAccount implements Comparable<FBAccount>{
     private String facebook_id;
     private String phone;
 
@@ -19,5 +19,11 @@ public class FBAccount {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    @Override
+    public int compareTo(FBAccount o) {
+        return this.getFacebook_id().compareTo(o.getFacebook_id());
     }
 }

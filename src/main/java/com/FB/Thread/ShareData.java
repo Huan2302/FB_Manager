@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ShareData {
+    volatile boolean running = true;
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("globals");
 
     String[] tables = resourceBundle.getString("table_test").split(",");
-    private List<String> listUid;
-    private List<FBAccount> list;
+    List<String> listUid;
+    List<FBAccount> list;
     public List<ResultModel> resultModel = new ArrayList<>();
 
 
