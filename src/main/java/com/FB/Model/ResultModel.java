@@ -30,4 +30,13 @@ public class ResultModel {
     public void setNext(List<String> next) {
         this.next = next;
     }
+
+    @Override
+    public String toString() {
+        return "ResultModel{" +
+                "result=" + result +
+                ", next=" + next +
+                ", accounts=" + accounts +
+                '}';
+    }
 }

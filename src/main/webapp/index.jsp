@@ -40,7 +40,7 @@
 			</div>
 		</form>
 
-		<form action="<%=request.getContextPath()%>/xu-ly" method="post" accept-charset="utf-8">
+		<form action="<%=request.getContextPath()%>/xu-ly" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 			<div class="list_UID">
 				<h3>Nhập danh sách UID</h3>
 				<div class="container">
@@ -61,7 +61,7 @@
 				    	<div style="height: 400px;border-radius: 4px;border: 1px solid #CED4DA;" class="form-floating">
 						  <div class="mb-3 m-4 text-start">
 							  <label  for="formFile" class="form-label">Tải lên file tại đây:</label>
-							  <input class="form-control" type="file" id="formFile">
+							  <input class="form-control" name="fileUID" type="file" id="formFile">
 							</div>
 						</div>
 				    </div>

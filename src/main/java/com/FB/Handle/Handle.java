@@ -10,7 +10,6 @@ public class Handle {
 
     private ResultModel rs = new ResultModel();
     private List<String> listPhone = new ArrayList<>();
-    private List<String> next = new ArrayList<>();
     private List<FBAccount> accounts = new ArrayList<>();
 
     public ResultModel InterPolationSearch( List<FBAccount> listUid, int location, List<String> list, int start){
@@ -21,24 +20,36 @@ public class Handle {
             if (uid.getFacebook_id().equals(item)) {
                 listPhone.add(uid.getPhone());
                 accounts.add(uid);
-                ++start;
+                list.remove(start);
                 if (start == list.size()){
-                    rs.setNext(next);
+                    rs.setNext(list);
                     rs.setResult(listPhone);
                     rs.setAccounts(accounts);
                     return rs;
                 }
                 return InterPolationSearch(listUid,i,list,start);
             }
+            if (start + 1 == list.size()){
+                rs.setNext(list);
+                rs.setResult(listPhone);
+                rs.setAccounts(accounts);
+                return rs;
+            }
+            if (item.compareTo(uid.getFacebook_id())<0){
+                return InterPolationSearch(listUid,i,list,start+1);
+            }
         }
-        next.add(item);
-        if (start + 1 == list.size()){
-            rs.setNext(next);
-            rs.setResult(listPhone);
-            rs.setAccounts(accounts);
-            return rs;
-        }
-        return InterPolationSearch(listUid,n,list,start+1);
+        rs.setNext(list);
+        rs.setResult(listPhone);
+        rs.setAccounts(accounts);
+        return rs;
+////        if (start + 1 == list.size()){
+////            rs.setNext(list);
+////            rs.setResult(listPhone);
+////            rs.setAccounts(accounts);
+////            return rs;
+////        }
+//        return InterPolationSearch(listUid,n,list,start+1);
     }
 
     public List<String> Pretreatment(String[] lists){

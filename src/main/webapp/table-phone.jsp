@@ -32,36 +32,83 @@
 	<br>
 	
 	<div class="container">
-		<table class="table table-bordered" id="myTable">
-		  <thead>
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">UID</th>
-		      <th scope="col">Phone</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-			<%
-			  List<ResultModel> list = (List<ResultModel>) request.getAttribute("listPhone");
-			  if (list!=null){
-			  	int index = 0;
-				for (ResultModel item:list){
-					for (FBAccount account:item.getAccounts()){
-						index++;
-			%>
-				<tr>
-				  <th scope="row"><%=index%></th>
-				  <td><%=account.getFacebook_id()%></td>
-				  <td><%=account.getPhone()%></td>
-				</tr>
-			<%
-					  }
-				  }
-			  }
-			%>
-		  </tbody>
-		</table>
+		<form method="get" action="<%=request.getContextPath()%>/download">
+			<table class="table table-bordered" id="myTable">
 
+				<%
+					List<ResultModel> list = (List<ResultModel>) request.getAttribute("listPhone");
+					List<FBAccount> list_Excel = (List<FBAccount>) session.getAttribute("listExcel");
+					if (list!=null){
+				%>
+				<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">UID</th>
+					<th scope="col">Phone</th>
+				</tr>
+				</thead>
+				<tbody>
+				<%
+
+					int index = 0;
+					for (ResultModel item:list){
+						for (FBAccount account:item.getAccounts()){
+							index++;
+				%>
+				<tr>
+					<th scope="row"><%=index%></th>
+					<td><%=account.getFacebook_id()%></td>
+					<td><%=account.getPhone()%></td>
+				</tr>
+				<%
+						}
+					}
+				%>
+				</tbody>
+				<%
+				}else if (list_Excel!=null){
+				%>
+				<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">UID</th>
+					<th scope="col">Gender</th>
+					<th scope="col">Birthday</th>
+					<th scope="col">Email</th>
+					<th scope="col">SDT</th>
+					<th scope="col">Localtion</th>
+				</tr>
+				</thead>
+				<tbody>
+				<%
+					int index = 0;
+					for (FBAccount item : list_Excel){
+						index++;
+				%>
+				<tr>
+					<th scope="row"><%=index%></th>
+					<td><%=item.getName()%></td>
+					<td><%=item.getFacebook_id()%></td>
+					<td><%=item.getGender()%></td>
+					<td><%=item.getBirthday()%></td>
+					<td><%=item.getEmail()%></td>
+					<td><%=item.getPhone()%></td>
+					<td><%=item.getLocation()%></td>
+				</tr>
+				<%
+					}
+				%>
+				</tbody>
+				<%
+					}
+				%>
+				</tbody>
+			</table>
+<%--			<input type="submit">--%>
+		</form>
+
+		<a href="<%=request.getContextPath()%>/download" class="link-primary">Xuất file Excel</a>
 	</div>
 	<script type="text/javascript" >
 		$(document).ready( function () {
