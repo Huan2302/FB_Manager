@@ -1,0 +1,71 @@
+body{
+	background-color: #EEEEEE;
+}
+
+h5{
+	text-align:left;
+}
+
+.navbar-brand{
+	font-size: 16px;
+	font-weight: bold;
+}
+.navbar-brand img{
+	height:  34px;
+}
+.container-fluid form button{
+	border-radius: 30px;
+}
+.wrapper {
+	/*text-align: center;	*/
+	padding: 0 120px;
+}
+.wrapper .title{
+	margin: 20px 0;
+}
+.wrapper form .span12{
+	padding-top: 28px;
+	font-size: 18px;
+	color: red;
+}
+.wrapper form h3{
+	padding: 10px 0;
+}
+.wrapper .list_UID h3{
+	padding-top: 30px;
+	
+}
+
+.btn-style{
+	color:#fff;
+	background-color:#DB452E;
+	border-color:#DB452E	}
+.btn-style:hover{
+	color:#fff;
+	background-color:#A93928;
+	border-color:#A93928
+}
+.card-style-h2{
+	color: red;
+}
+.card-style-h4{
+	color: #068757;
+}
+
+.info-table_style{
+	border: 1px solid black;
+}
+.info-table_style h2{
+	margin-top: 5px;
+}
+/*
+.form-upload_custom{
+	height: 400px;
+	background-color: white;
+}*/
+
+
+
+
+
+
