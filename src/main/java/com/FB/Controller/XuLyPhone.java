@@ -24,6 +24,13 @@ import java.util.List;
 @WebServlet(value = "/xu-ly")
 public class XuLyPhone extends HttpServlet {
 
+//    @Override
+//    public void init() throws ServletException {
+//        try{
+//
+//        }
+//    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -75,6 +82,7 @@ public class XuLyPhone extends HttpServlet {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("======================");
         return shareData.resultModel;
     }
 

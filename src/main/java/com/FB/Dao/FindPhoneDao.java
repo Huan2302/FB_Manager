@@ -10,5 +10,7 @@ public class FindPhoneDao extends AbstractDao{
 //        String sql = "SELECT * FROM "+table+" ORDER BY uid ASC";
         String sql = "SELECT * FROM "+table;
         return query(sql,new FBAccountMapper());
+//        return DBHelp.executeQueryForListFromCache(FBAccount.class,"users","userAll",sql);
     }
+
 }

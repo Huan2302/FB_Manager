@@ -30,7 +30,7 @@ public class ThreadTwo extends Thread{
                         Handle handle = new Handle();
                         Collections.sort(shareData.getList());
                         System.out.println("DB đã được sắp xếp");
-                        ResultModel rs = handle.InterPolationSearch(shareData.getList(),0,shareData.getListUid(),0);
+                        ResultModel rs = handle.expoSearch(shareData.getList(),0,shareData.getListUid(),0);
                         System.out.println("Xử lý xong");
                         shareData.setListUid(rs.getNext());
                         if (shareData.getListUid().isEmpty()){
